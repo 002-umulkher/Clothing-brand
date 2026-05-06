@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ember Abaya</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Elegant Abayas</h1>
+      <p>Timeless modest fashion crafted with elegance and comfort.</p>
+      <button class="btn" onclick="scrollToProducts()">Shop Now</button>
+    </div>
+
+    <img src="https://via.placeholder.com/400x500" alt="Abaya Model">
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="products" id="products">
+    <h2>Our Collection</h2>
+
+    <div class="product-grid">
+
+      <div class="product-card">
+        <img src="https://via.placeholder.com/300x400">
+        <h3>Classic Black Abaya</h3>
+        <p class="price">Ksh 3,500</p>
+        <button class="btn" onclick="orderWhatsApp('Classic Black Abaya - Ksh 3,500')">
+          Order on WhatsApp
+        </button>
+      </div>
+
+      <div class="product-card">
+        <img src="https://via.placeholder.com/300x400">
+        <h3>Silk Flow Abaya</h3>
+        <p class="price">Ksh 4,200</p>
+        <button class="btn" onclick="orderWhatsApp('Silk Flow Abaya - Ksh 4,200')">
+          Order on WhatsApp
+        </button>
+      </div>
+
+      <div class="product-card">
+        <img src="https://via.placeholder.com/300x400">
+        <h3>Ember Trim Abaya</h3>
+        <p class="price">Ksh 4,800</p>
+        <button class="btn" onclick="orderWhatsApp('Ember Trim Abaya - Ksh 4,800')">
+          Order on WhatsApp
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- COLLECTION -->
+  <section class="collection">
+    <h2>Luxury Meets Modesty</h2>
+    <p>Designed for confidence and elegance in every moment.</p>
+    <img src="https://via.placeholder.com/800x400">
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact">
+    <h2>Contact Us</h2>
+    <p>Have questions or custom orders? Reach out.</p>
+
+    <input type="text" placeholder="Your Name">
+    <input type="email" placeholder="Your Email">
+    <textarea rows="4" placeholder="Message"></textarea>
+
+    <button class="btn">Send Message</button>
+  </section>
+
+  <!-- WHATSAPP FLOAT -->
+  <div class="whatsapp-btn" onclick="openWhatsApp()">
+    💬
+  </div>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+</body>
+</html>

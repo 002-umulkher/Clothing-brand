@@ -1,13 +1,9 @@
-const phoneNumber = "254712345678"; // replace
+// 📞 Your WhatsApp number (use country code, no +)
+const phoneNumber = "254712345678"; // <-- replace with yours
 
-// WhatsApp
-function openWhatsApp() {
-  const message = encodeURIComponent(
-    "Hello, I'm interested in your abayas."
-  );
-  window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
-}
+/* ================= WHATSAPP FUNCTIONS ================= */
 
+// From product cards
 function orderWhatsApp(product) {
   const message = encodeURIComponent(
     `Hi, I want to order: ${product}`
@@ -15,19 +11,38 @@ function orderWhatsApp(product) {
   window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
 }
 
-// Smooth scroll
+// From contact form
+function sendToWhatsApp() {
+  const name = document.querySelector('input[type="text"]').value.trim();
+  const email = document.querySelector('input[type="email"]').value.trim();
+  const message = document.querySelector('textarea').value.trim();
+
+  if (!name || !message) {
+    alert("Please enter your name and message");
+    return;
+  }
+
+  const fullMessage = encodeURIComponent(
+    `Hello, my name is ${name}\nEmail: ${email}\n\n${message}`
+  );
+
+  window.open(`https://wa.me/${phoneNumber}?text=${fullMessage}`, "_blank");
+}
+
+/* ================= SCROLL ================= */
+
 function scrollToProducts() {
   document.getElementById("products").scrollIntoView({
     behavior: "smooth"
   });
 }
 
-/* ================= SCROLL ANIMATIONS ================= */
+/* ================= ANIMATIONS ================= */
 
 const faders = document.querySelectorAll(".fade-in");
-const cards = document.querySelectorAll(".product-card");
+const productSection = document.querySelector(".products");
 
-const observer = new IntersectionObserver(entries => {
+const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add("show");
@@ -38,22 +53,22 @@ const observer = new IntersectionObserver(entries => {
 faders.forEach(el => observer.observe(el));
 
 /* Stagger product cards */
-const cardObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const cards = entry.target.querySelectorAll(".product-card");
-      cards.forEach((card, index) => {
-        setTimeout(() => {
-          card.style.opacity = "1";
-          card.style.transform = "translateY(0)";
-          card.style.transition = "0.5s ease";
-        }, index * 150);
-      });
-    }
-  });
-}, { threshold: 0.2 });
-
-const productSection = document.querySelector(".products");
 if (productSection) {
+  const cards = productSection.querySelectorAll(".product-card");
+
+  const cardObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        cards.forEach((card, index) => {
+          setTimeout(() => {
+            card.style.opacity = "1";
+            card.style.transform = "translateY(0)";
+            card.style.transition = "0.5s ease";
+          }, index * 150);
+        });
+      }
+    });
+  }, { threshold: 0.2 });
+
   cardObserver.observe(productSection);
 }
